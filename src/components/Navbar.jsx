@@ -34,12 +34,13 @@ const Navbar = () => {
                             className={`w-16 h-auto ${navState && "filter brightness-0"}`}
                         />
                     </div>
-                    <ul className='flex items-center justify-center gap-2'>
-                        <li className='grid items-center'>
-                            <MagnifyingGlassIcon
-                                className={`icon-style ${navState && "text-slate-900 transition-all duration-300"}`}/>
-                        </li>
+                    <ul className="flex gap-4">
+                        <li className={`w-16 h-auto text-white cursor-pointer ${navState && "filter brightness-0"}`}>Nike</li>
+                        <li className={`w-16 h-auto text-white cursor-pointer ${navState && "filter brightness-0"}`}>Adidas</li>
+                        <li className={`w-16 h-auto text-white cursor-pointer ${navState && "filter brightness-0"}`}>Li-Ning</li>
                     </ul>
+                    <MagnifyingGlassIcon
+                        className={`icon-style ${navState && "text-slate-900 transition-all duration-300"}`}/>
                 </nav>
             </header>
         </>
