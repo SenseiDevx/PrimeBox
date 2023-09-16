@@ -22,7 +22,7 @@ const toprateslaes = {
     title: "Top Rated Sales",
     items: [
         {
-            id: "0M0x1",
+            id: "1",
             title: "Nike Air Low Premium",
             text: "MEN Running Shoes",
             rating: "5+",
@@ -33,7 +33,7 @@ const toprateslaes = {
             shadow: "shadow-lg shadow-blue-500",
         },
         {
-            id: "0M0x2",
+            id: "2",
             title: "Nike Air Force Green",
             text: "MEN Running Shoes",
             rating: "5+",
@@ -44,7 +44,7 @@ const toprateslaes = {
             shadow: "shadow-lg shadow-green-500",
         },
         {
-            id: "0M0x3",
+            id: "3",
             title: "Nike Addapt BB Rose",
             text: "MEN Running Shoes",
             rating: "5+",
@@ -55,7 +55,7 @@ const toprateslaes = {
             shadow: "shadow-lg shadow-rose-500",
         },
         {
-            id: "0M0x4",
+            id: "4",
             title: "Nike Air Premium",
             text: "MEN Running Shoes",
             rating: "5+",
@@ -66,7 +66,7 @@ const toprateslaes = {
             shadow: "shadow-lg shadow-orange-500",
         },
         {
-            id: "0M0x5",
+            id: "5",
             title: "Nike Adapt BB Pro",
             text: "MEN Running Shoes",
             rating: "5+",
@@ -77,7 +77,7 @@ const toprateslaes = {
             shadow: "shadow-lg shadow-yellow-500",
         },
         {
-            id: "0M0x6",
+            id: "6",
             title: "Air Jordan PR3",
             text: "MEN Running Shoes",
             rating: "5+",
@@ -88,7 +88,7 @@ const toprateslaes = {
             shadow: "shadow-lg shadow-cyan-500",
         },
         {
-            id: "0M0x7",
+            id: "7",
             title: "Shoe",
             text: "MEN Running Shoes",
             rating: "5+",
@@ -99,7 +99,7 @@ const toprateslaes = {
             shadow: "shadow-lg shadow-yellow-500",
         },
         {
-            id: "0M0x8",
+            id: "8",
             title: "Nike Jordan Air Max",
             text: "MEN Running Shoes",
             rating: "5+",
@@ -110,7 +110,7 @@ const toprateslaes = {
             shadow: "shadow-lg shadow-orange-800",
         },
         {
-            id: "0M0x9",
+            id: "9",
             title: "Nike Old Max-x",
             text: "MEN Running Shoes",
             rating: "5+",
@@ -121,7 +121,7 @@ const toprateslaes = {
             shadow: "shadow-lg shadow-indigo-500",
         },
         {
-            id: "0M0x10",
+            id: "10",
             title: "Nike Lime Jordan 11",
             text: "MEN Running Shoes",
             rating: "5+",
@@ -132,7 +132,7 @@ const toprateslaes = {
             shadow: "shadow-lg shadow-lime-500",
         },
         {
-            id: "0M0x11",
+            id: "11",
             title: "Nike Air Black Max",
             text: "MEN Running Shoes",
             rating: "5+",
@@ -143,7 +143,7 @@ const toprateslaes = {
             shadow: "shadow-lg shadow-black",
         },
         {
-            id: "0M0x12",
+            id: "12",
             title: "Nike Zoom Max",
             text: "MEN Running Shoes",
             rating: "5+",
