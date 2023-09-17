@@ -30,6 +30,9 @@ const nikeProduct = {
             shadow: "shadow-lg shadow-blue-500",
             images: [
                 nike10, nike4, nike3
+            ],
+            sizes: [
+                36, 37, 38, 39, 40, 42, 43, 44, 45
             ]
         },
         {
