@@ -28,6 +28,9 @@ const nikeProduct = {
             price: "150",
             color: "from-sky-600 to-indigo-600",
             shadow: "shadow-lg shadow-blue-500",
+            images: [
+                nike10, nike4, nike3
+            ]
         },
         {
             id: "2",

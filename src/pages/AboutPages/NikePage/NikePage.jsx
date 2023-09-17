@@ -1,6 +1,7 @@
 import {useNavigate, useParams} from "react-router-dom";
 import NikeSales from "../../../components/NikeProducts/NikeSales.jsx";
 import {nikeProduct} from "../../../data/data.js";
+import { useState } from 'react';
 
 const NikePage = ({ ifExists }) => {
     const { id } = useParams();
@@ -11,31 +12,49 @@ const NikePage = ({ ifExists }) => {
         return <div>Товар не найден.</div>;
     }
 
+    const [selectedImage, setSelectedImage] = useState(product.images[0]);
+
     const back = () => {
         navigate("/");
+    };
+
+    const changeSelectedImage = (image) => {
+        setSelectedImage(image);
     };
 
     return (
         <>
             <div className="nike-container mt-24">
-                <div className="flex ">
-                    <div>
-                        <button
-                            className="bg-blue-500 text-white py-2 px-4 rounded shadow-md transition duration-300 ease-in-out transform"
-                            onClick={back}
-                        >
-                            Назад
-                        </button>
+                <div className="flex justify-between lg:flex-col">
+                    <div className="flex flex-wrap-reverse items-end">
+                        <div className="mr-11 lg:flex" >
+                            {product.images.map((image, i) => (
+                                <div
+                                    key={i}
+                                    className={`w-36 h-36 sm:w-24 sm:h-24 mr-1 border-2 rounded-2xl mb-7 cursor-pointer p-5  ${
+                                        selectedImage === image ? 'border-blue-500 ' : ''
+                                    }`}
+                                    onClick={() => changeSelectedImage(image)}
+                                >
+                                    <img
+                                        className="w-full h-full"
+                                        src={image}
+                                        alt={`Image ${i + 1}`}
+                                    />
+                                </div>
+
+                            ))}
+                        </div>
                         <div
                             className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
                                 ifExists ? "justify-items-start" : "justify-items-center"
                             } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105`}
-                            style={{ width: "500px", height: "500px" }}
+                            style={{ width: "488px", height: "300px", marginBottom: "50px" }}
                         >
                             <img
                                 src={product.img}
                                 alt={product.title}
-                                className="w-400 h-400 relative rounded-xl py-4 px-5 transition-all duration-700 ease-in-out hover:scale-105"
+                                className="w-400 h-400 relative rounded-xl py-4 px-5 transition-all duration-700 ease-in-out hover:scale-105 lg:flex justify-center items-center"
                             />
                         </div>
                     </div>
@@ -45,7 +64,9 @@ const NikePage = ({ ifExists }) => {
                     </div>
                 </div>
             </div>
-            <NikeSales nikeProduct={nikeProduct} />
+            <div className="mt-24">
+                <NikeSales nikeProduct={nikeProduct} />
+            </div>
         </>
     );
 };
