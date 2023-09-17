@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {HeartIcon, MagnifyingGlassIcon, ShoppingBagIcon} from '@heroicons/react/24/outline'
 import logo from '../assets/logo.png';
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
     const [navState, setNavState] = useState(false);
@@ -35,7 +36,7 @@ const Navbar = () => {
                         />
                     </div>
                     <ul className="flex gap-4">
-                        <li className={`w-16 h-auto text-white cursor-pointer ${navState && "filter brightness-0"}`}>Nike</li>
+                        <Link to="newBalance"><li className={`w-16 h-auto text-white cursor-pointer ${navState && "filter brightness-0"}`}>Nike</li></Link>
                         <li className={`w-16 h-auto text-white cursor-pointer ${navState && "filter brightness-0"}`}>Adidas</li>
                         <li className={`w-16 h-auto text-white cursor-pointer ${navState && "filter brightness-0"}`}>Li-Ning</li>
                     </ul>
