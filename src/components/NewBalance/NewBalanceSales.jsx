@@ -12,6 +12,7 @@ const NewBalanceSales = ({ifExists, newBalanceProduct: {items}}) => {
                     <NewBalanceItem {...item} key={i} ifExists={ifExists}/>
                 ))}
             </div>
+
         </div>
     );
 };

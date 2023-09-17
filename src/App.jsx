@@ -13,7 +13,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<MainPage/>}/>
                 <Route path='nike/:id' element={<NikePage ifExists={nikeProduct}/>}/>
-                <Route path='newBalance/:id' element={<NewBalancePage/>}/>
+                <Route path='newBalance' element={<NewBalancePage/>}/>
             </Routes>
             {/*<Footer/>*/}
         </>

@@ -7,6 +7,8 @@ const NikePage = ({ifExists}) => {
     const {id} = useParams();
     const navigate = useNavigate();
     const product = nikeProduct.items.find((item) => item.id === id);
+    const [selectedSize, setSelectedSize] = useState(null);
+
 
     if (!product) {
         return <div>Товар не найден.</div>;
@@ -31,7 +33,7 @@ const NikePage = ({ifExists}) => {
                             {product.images.map((image, i) => (
                                 <div
                                     key={i}
-                                    className={`w-36 h-36 sm:w-24 sm:h-24 mr-20 border-2 rounded-2xl mb-7 cursor-pointer p-5  ${
+                                    className={`w-36 h-36 sm:w-24 sm:h-24 mr-5 border-2 rounded-2xl mb-7 cursor-pointer p-5  ${
                                         selectedImage === image ? 'border-blue-500 ' : ''
                                     }`}
                                     onClick={() => changeSelectedImage(image)}
@@ -48,34 +50,45 @@ const NikePage = ({ifExists}) => {
                             <div
                                 className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
                                     ifExists ? "justify-items-start" : "justify-items-center"
-                                } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105`}
-                                style={{width: "488px", height: "300px", marginBottom: "50px"}}
+                                } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105 my-container`}
+                                style={{ height: "300px", marginBottom: "50px" }}
                             >
                                 <img
-                                    src={product.img}
+                                    src={selectedImage}
                                     alt={product.title}
-                                    className="w-400 h-400 relative rounded-xl py-4 px-5 transition-all duration-700 ease-in-out hover:scale-105 lg:flex justify-center items-center"
+                                    className="w-400 h-400 sm:w-300 sm:h-300 relative rounded-xl py-4 px-5 transition-all duration-700 ease-in-out hover:scale-105 lg:flex justify-center items-center"
                                 />
                             </div>
-                            <div>
+                            <div className="flex-wrap">
                                 <h1 className="text-2xl text-white pb-2">Выбирайте ваш размер</h1>
-                                <div className="flex gap-4">
+                                <div className="flex gap-3 flex-wrap mb-10 w-100">
                                     {product.sizes.map((size, i) => (
-                                        <div key={i} className="border-2 w-45 h-45 p-1.5 rounded text-white cursor-pointer">
+                                        <div
+                                            key={i}
+                                            className={`border-2 w-45 h-45 p-1.5 rounded text-white cursor-pointer ${
+                                                selectedSize === size ? 'bg-blue-500 text-black' : ''
+                                            }`}
+                                            onClick={() => setSelectedSize(size)}
+                                        >
                                             {size}
                                         </div>
                                     ))}
                                 </div>
                             </div>
+
                         </div>
                         <div>
-                            <h1>{product.title}</h1>
-                            <p>{product.text}</p>
+                            <h1 className="text-white">{product.title}</h1>
+                            <p className="text-white">{product.text}</p>
                         </div>
                     </div>
-
                 </div>
             </div>
+            <div className="nike-container">
+                <h3 className="text-white">Название: {product.title}</h3>
+                <p className="text-white">Размер: {selectedSize ? selectedSize : 'Выберите размер'}</p>
+            </div>
+
             <div className="mt-24">
                 <NikeSales nikeProduct={nikeProduct}/>
             </div>

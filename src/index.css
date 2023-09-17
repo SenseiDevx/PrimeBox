@@ -102,3 +102,14 @@
 body {
     background-color: #171717;
 }
+
+.my-container {
+    width: 488px;
+}
+
+/* Медиа-запрос для экранов менее 500px */
+@media (max-width: 500px) {
+    .my-container {
+        width: auto; /* Здесь устанавливаем width в auto */
+    }
+}
