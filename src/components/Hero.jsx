@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import heroImg from '../assets/hero.png';
-import {toprateslaes} from '../data/data.js';
+import {nikeProduct} from '../data/data.js';
 
 const Hero = () => {
     const [searchText, setSearchText] = useState('');
@@ -36,7 +36,7 @@ const Hero = () => {
         };
     }, []);
 
-    const filteredSales = toprateslaes.items.filter(item =>
+    const filteredSales = nikeProduct.items.filter(item =>
         item.title.toLowerCase().includes(searchText.toLowerCase())
     );
 

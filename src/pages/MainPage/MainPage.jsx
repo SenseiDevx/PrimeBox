@@ -1,13 +1,16 @@
 import React from 'react';
-import {Hero, Sales} from "../../components/index.js";
-import {toprateslaes} from "../../data/data.js";
+import {newBalanceProduct, nikeProduct} from "../../data/data.js";
+import Hero from "../../components/Hero.jsx";
+import NikeSales from "../../components/NikeProducts/NikeSales.jsx";
+import NewBalanceSales from "../../components/NewBalance/NewBalanceSales.jsx";
 
 const MainPage = () => {
     return (
         <>
             <main className='flex flex-col gap-16 relative'>
                 <Hero/>
-                <Sales endpoint={toprateslaes}/>
+                <NikeSales nikeProduct={nikeProduct}/>
+                <NewBalanceSales newBalanceProduct={newBalanceProduct}/>
             </main>
         </>
     );

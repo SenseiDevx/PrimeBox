@@ -1,23 +1,22 @@
-import React from "react";
-import {StarIcon, ShoppingBagIcon} from "@heroicons/react/24/solid";
+import React from 'react';
 import {Link} from "react-router-dom";
+import {StarIcon} from "@heroicons/react/24/solid";
 
-const Item = ({
-                  ifExists,
-                  id,
-                  color,
-                  shadow,
-                  title,
-                  text,
-                  img,
-                  btn,
-                  rating,
-                  price,
-              }) => {
+const NewBalanceItem = ({
+                            ifExists,
+                            id,
+                            color,
+                            shadow,
+                            title,
+                            text,
+                            img,
+                            btn,
+                            rating,
+                            price,}) => {
 
     return (
         <>
-            <Link to={`/sneakerPage/${id}`}>
+            <Link to={`/newBalance/${id}`}>
                 <div
                     className={`relative bg-gradient-to-b ${color} ${shadow} grid items-center ${
                         ifExists ? "justify-items-start" : "justify-items-center"
@@ -77,4 +76,4 @@ const Item = ({
     );
 };
 
-export default Item;
+export default NewBalanceItem;
