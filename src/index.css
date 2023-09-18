@@ -115,3 +115,13 @@ body {
         width: auto; /* Здесь устанавливаем width в auto */
     }
 }
+
+/*@media (max-width: 640px) { !* Медиа-запрос для мобильных устройств с шириной экрана до 640px (вы можете изменить этот размер по своему усмотрению) *!*/
+/*    .mt-24.sm\:items-center {*/
+/*        display: flex;*/
+/*        flex-direction: column;*/
+/*        align-items: center;*/
+/*        justify-content: center;*/
+/*        text-align: center;*/
+/*    }*/
+/*}*/

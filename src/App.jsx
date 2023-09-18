@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Routes} from 'react-router-dom';
 import MainPage from './pages/MainPage/MainPage.jsx';
-import NikePage from "./pages/AboutPages/NikePage/NikePage.jsx";
+import NikePage from "./pages/AboutPages/NikePage.jsx";
 import Navbar from "./components/Navbar.jsx";
 import NewBalancePage from "./pages/AboutPages/NewBalancePage.jsx";
 import {nikeProduct} from "./data/data.js";

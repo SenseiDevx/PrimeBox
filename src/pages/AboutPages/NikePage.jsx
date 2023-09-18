@@ -1,6 +1,6 @@
 import {useNavigate, useParams} from "react-router-dom";
-import NikeSales from "../../../components/NikeProducts/NikeSales.jsx";
-import {nikeProduct} from "../../../data/data.js";
+import NikeSales from "../../components/NikeProducts/NikeSales.jsx";
+import {nikeProduct} from "../../data/data.js";
 import {useState} from 'react';
 
 const NikePage = ({ifExists}) => {
@@ -8,6 +8,8 @@ const NikePage = ({ifExists}) => {
     const navigate = useNavigate();
     const product = nikeProduct.items.find((item) => item.id === id);
     const [selectedSize, setSelectedSize] = useState(null);
+
+    const selectedPrice = product.prices[selectedSize];
 
 
     if (!product) {
@@ -33,7 +35,7 @@ const NikePage = ({ifExists}) => {
                             className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
                                 ifExists ? "justify-items-start" : "justify-items-center"
                             } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105 my-container`}
-                            style={{height: "300px", marginBottom: "50px"}}
+                            style={{height: "300px", marginBottom: "50px", marginRight: "15px"}}
                         >
                             <img
                                 src={selectedImage}
@@ -100,14 +102,18 @@ const NikePage = ({ifExists}) => {
                 <div className="border-2 border-blue-400 p-5 w-96 rounded-2xl sm:w-64">
                     <h3 className="text-white mb-5 text-2xl sm:text-1xl">Название: {product.title}</h3>
                     <p className="text-white mb-5 text-2xl sm:text-1xl">Размер: {selectedSize ? selectedSize : 'Выберите размер'}</p>
-                    <button className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
-                        ifExists ? "justify-items-start" : "justify-items-center"
-                    } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full`}
-                            style={{width: "150px", color: "white"}}
-                    >Купить товар</button>
+                    <h4 className="text-white">Цена: {selectedPrice} Сом</h4>
+                    <button
+                        className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
+                            ifExists ? "justify-items-start" : "justify-items-center"
+                        } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full`}
+                        style={{ width: "150px", color: "white" }}
+                    >
+                        Купить товар
+                    </button>
                 </div>
             </div>
-            <div className="mt-24">
+            <div className="mt-24 sm:items-center">
                 <NikeSales nikeProduct={nikeProduct}/>
             </div>
         </>
