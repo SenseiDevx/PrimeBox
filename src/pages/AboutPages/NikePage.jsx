@@ -26,6 +26,23 @@ const NikePage = ({ifExists}) => {
         setSelectedImage(image);
     };
 
+
+    const handleBuyClick = () => {
+        if (!selectedSize) {
+            alert('Выберите размер, прежде чем купить товар.');
+            return; // Прекратить выполнение, если размер не выбран
+        }
+
+        const message = `Артикул: ${product.id}\nНазвание: ${product.title}\nРазмер: ${selectedSize}\nЦена: ${selectedPrice} Сом`;
+
+        // Замените "whatsappNumber" на ваш номер WhatsApp
+        const whatsappNumber = '+996708659585';
+
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+    };
+
+
     return (
         <>
             <div className="nike-container mt-24">
@@ -61,7 +78,7 @@ const NikePage = ({ifExists}) => {
                             ))}
                         </div>
                         <div className="flex-wrap">
-                            <h1 className="text-2xl text-white pb-2">Выбирайте ваш размер</h1>
+                            <h1 className="text-2xl text-white pb-2 ">Выбирайте ваш размер</h1>
                             <div className="flex gap-3 flex-wrap mb-10 w-100">
                                 {product.sizes.map((size, i) => (
                                     <div
@@ -100,14 +117,18 @@ const NikePage = ({ifExists}) => {
                     </div>
                 </div>
                 <div className="border-2 border-blue-400 p-5 w-96 rounded-2xl sm:w-64">
+                    <h4 className="text-white mb-5 text-2xl">Артикул: {product.id}</h4>
                     <h3 className="text-white mb-5 text-2xl sm:text-1xl">Название: {product.title}</h3>
-                    <p className="text-white mb-5 text-2xl sm:text-1xl">Размер: {selectedSize ? selectedSize : 'Выберите размер'}</p>
-                    <h4 className="text-white">Цена: {selectedPrice} Сом</h4>
+                    <p className="text-white mb-5 text-2xl sm:text-1xl">
+                        Размер: {selectedSize ? selectedSize : 'Выберите размер'}
+                    </p>
+                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цена: {selectedPrice} Сом</h4>
                     <button
                         className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
-                            ifExists ? "justify-items-start" : "justify-items-center"
+                            ifExists ? 'justify-items-start' : 'justify-items-center'
                         } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full`}
-                        style={{ width: "150px", color: "white" }}
+                        style={{ width: '150px', color: 'white' }}
+                        onClick={handleBuyClick}
                     >
                         Купить товар
                     </button>
