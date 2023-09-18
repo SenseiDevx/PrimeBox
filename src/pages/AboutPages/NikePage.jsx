@@ -43,11 +43,11 @@ const NikePage = ({ifExists}) => {
                                 className="w-400 h-400 sm:w-300 sm:h-300 relative rounded-xl py-4 px-5 transition-all duration-700 ease-in-out hover:scale-105 lg:flex justify-center items-center"
                             />
                         </div>
-                        <div className="mr-11 flex">
+                        <div className="mr-11 flex justify-between">
                             {product.images.map((image, i) => (
                                 <div
                                     key={i}
-                                    className={`w-36 h-36 sm:w-24 sm:h-24 mr-5 border-2 rounded-2xl mb-7 cursor-pointer p-5  ${
+                                    className={`w-36 h-36 sm:w-24 sm:h-24  mr-5  border-2 rounded-2xl mb-7 cursor-pointer p-5  ${
                                         selectedImage === image ? 'border-blue-500 ' : ''
                                     }`}
                                     onClick={() => changeSelectedImage(image)}
