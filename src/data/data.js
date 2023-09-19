@@ -29,10 +29,11 @@ const nikeProduct = {
             color: "from-sky-600 to-indigo-600",
             shadow: "shadow-lg shadow-blue-500",
             images: [
-                { src: nike1, description: "красный" },
-                { src: nike2, description: "синий" },
-                { src: nike3, description: "зеленый" }
-            ],            sizes: [36, 37, 38, 39, 40, 42, 43, 44, 45],
+                { src: nike1, description: "красный", price: 100 },
+                { src: nike2, description: "синий", price: 120 },
+                { src: nike3, description: "зеленый", price: 90 }
+            ],
+            sizes: [36, 37, 38, 39, 40, 42, 43, 44, 45],
             prices: {
                 36: 150,
                 37: 155,
@@ -305,7 +306,6 @@ const newBalanceProduct = {
         },
     ],
 };
-
 
 
 export {nikeProduct, newBalanceProduct};

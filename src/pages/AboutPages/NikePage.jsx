@@ -1,13 +1,28 @@
 import {useNavigate, useParams} from "react-router-dom";
 import NikeSales from "../../components/NikeProducts/NikeSales.jsx";
 import {nikeProduct} from "../../data/data.js";
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 const NikePage = ({ifExists}) => {
     const {id} = useParams();
     const navigate = useNavigate();
     const product = nikeProduct.items.find((item) => item.id === id);
     const [selectedSize, setSelectedSize] = useState(null);
+    const [selectedImage, setSelectedImage] = useState(null); // Начальное значение выбранного изображения
+    const [selectedImagePrice, setSelectedImagePrice] = useState(0); // Начальное значение цены за выбранное изображение
+    const [selectedColorDescription, setSelectedColorDescription] = useState("");
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    useEffect(() => {
+        // Проверяем, выбраны ли размер и цена за изображение
+        if (selectedSize && selectedImagePrice !== null) {
+            const selectedPrice = product.prices[selectedSize];
+            // Обновляем итоговую сумму
+            setTotalPrice(selectedImagePrice + selectedPrice);
+        }
+    }, [selectedSize, selectedImagePrice]);
+
+
 
     const selectedPrice = product.prices[selectedSize];
 
@@ -16,31 +31,36 @@ const NikePage = ({ifExists}) => {
         return <div>Товар не найден.</div>;
     }
 
-    const [selectedImage, setSelectedImage] = useState(product.images[0]);
 
     const back = () => {
         navigate("/");
     };
 
     const changeSelectedImage = (image) => {
+        const selectedImageData = product.images.find((imageData) => imageData.src === image);
         setSelectedImage(image);
+        setSelectedImagePrice(selectedImageData.price); // Обновляем цену за выбранную картинку
+        setSelectedColorDescription(selectedImageData.description); // Обновляем описание цвета
     };
 
 
+
     const handleBuyClick = () => {
-        if (!selectedSize) {
-            alert('Выберите размер, прежде чем купить товар.');
+        if (!selectedSize || !selectedImage) {
+            alert('Выберите размер и рассветку, прежде чем купить товар.');
             return; // Прекратить выполнение, если размер не выбран
         }
 
-        const message = `Артикул: ${product.id}\nНазвание: ${product.title}\nРазмер: ${selectedSize}\nЦена: ${selectedPrice} Сом`;
+        const message = `Артикул: ${product.id}\nНазвание: ${product.title}\nРазмер: ${selectedSize}\nЦена за товар: ${selectedPrice} Сом\nЦена за цвет: ${selectedImagePrice} Сом\nЦвет: ${selectedColorDescription}\nИтого: ${totalPrice} Сом`;
 
         // Замените "whatsappNumber" на ваш номер WhatsApp
-        const whatsappNumber = '+996708659585';
+        const whatsappNumber = '+996709013681';
 
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
         window.open(whatsappURL, '_blank');
     };
+
+
 
 
     return (
@@ -118,9 +138,15 @@ const NikePage = ({ifExists}) => {
                     <h4 className="text-white mb-5 text-2xl">Артикул: {product.id}</h4>
                     <h3 className="text-white mb-5 text-2xl sm:text-1xl">Название: {product.title}</h3>
                     <p className="text-white mb-5 text-2xl sm:text-1xl">
-                        Размер: {selectedSize ? selectedSize : 'Выберите размер'}
+                        Размер: {selectedSize }
                     </p>
                     <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цена: {selectedPrice} Сом</h4>
+                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">
+                        {selectedImage ? `Цена за цвет: ${selectedImagePrice} Сом` : 'Цена за цвет:'}
+                    </h4>
+                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цвет: {selectedColorDescription}</h4>
+                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">Итого: {totalPrice} Сом</h4>
+
                     <button
                         className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
                             ifExists ? 'justify-items-start' : 'justify-items-center'
