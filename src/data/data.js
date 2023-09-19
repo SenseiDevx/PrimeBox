@@ -28,18 +28,48 @@ const nikeProduct = {
             price: "150",
             color: "from-sky-600 to-indigo-600",
             shadow: "shadow-lg shadow-blue-500",
-            images: [nike10, nike4, nike3],
+            colors: [nike10, nike4, nike3],
             sizes: [36, 37, 38, 39, 40, 42, 43, 44, 45],
             prices: {
-                36: 150,
-                37: 155,
-                38: 160,
-                39: 165,
-                40: 170,
-                42: 175,
-                43: 180,
-                44: 185,
-                45: 190,
+                36: {
+                    price: 150,
+                    color: "blue", // Цвет рассветки
+                },
+                37: {
+                    price: 155,
+                    color: "red", // Цвет рассветки
+                },
+                38: {
+                    price: 160,
+                    color: "green", // Цвет рассветки
+                },
+                39: {
+
+                },
+                40: {
+                  price: 170,
+                  color: "green"
+                },
+                41: {
+                  price: 170,
+                  color: "green"
+                },
+                42: {
+                  price: 170,
+                  color: "green"
+                },
+                43: {
+                  price: 170,
+                  color: "green"
+                },
+                44: {
+                  price: 170,
+                  color: "green"
+                },
+                45: {
+                  price: 170,
+                  color: "green"
+                },
             },
         },
         {

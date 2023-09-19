@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {StarIcon} from "@heroicons/react/24/solid";
 
 const NikeItem = ({
                       ifExists,
@@ -40,7 +39,6 @@ const NikeItem = ({
                                 <h1 className="text-black text-sm font-medium">${price}</h1>
                             </div>
                             <div className="flex items-center gap-1">
-                                <StarIcon className="icon-style w-5 h-5 md:w-4 md:h-4"/>
                                 <h1 className="md:text-sm font-normal text-slate-100">
                                     {rating}
                                 </h1>

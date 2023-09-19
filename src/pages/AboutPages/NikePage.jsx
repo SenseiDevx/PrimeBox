@@ -3,20 +3,20 @@ import NikeSales from "../../components/NikeProducts/NikeSales.jsx";
 import {nikeProduct} from "../../data/data.js";
 import {useState} from 'react';
 
-const NikePage = ({ifExists}) => {
-    const {id} = useParams();
+
+const NikePage = ({ ifExists }) => {
+    const { id } = useParams();
     const navigate = useNavigate();
     const product = nikeProduct.items.find((item) => item.id === id);
     const [selectedSize, setSelectedSize] = useState(null);
-
-    const selectedPrice = product.prices[selectedSize];
-
+    const [selectedImage, setSelectedImage] = useState(product.colors[0]);
+    const [selectedColorPrice, setSelectedColorPrice] = useState(
+        product.prices[product.sizes[0]].price
+    );
 
     if (!product) {
         return <div>Товар не найден.</div>;
     }
-
-    const [selectedImage, setSelectedImage] = useState(product.images[0]);
 
     const back = () => {
         navigate("/");
@@ -26,22 +26,22 @@ const NikePage = ({ifExists}) => {
         setSelectedImage(image);
     };
 
-
     const handleBuyClick = () => {
         if (!selectedSize) {
-            alert('Выберите размер, прежде чем купить товар.');
+            alert("Выберите размер, прежде чем купить товар.");
             return; // Прекратить выполнение, если размер не выбран
         }
 
-        const message = `Артикул: ${product.id}\nНазвание: ${product.title}\nРазмер: ${selectedSize}\nЦена: ${selectedPrice} Сом`;
+        const message = `Артикул: ${product.id}\nНазвание: ${product.title}\nРазмер: ${selectedSize}\nЦена: ${selectedColorPrice} Сом`;
 
         // Замените "whatsappNumber" на ваш номер WhatsApp
-        const whatsappNumber = '+996708659585';
+        const whatsappNumber = "+996708659585";
 
-        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappURL, '_blank');
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+            message
+        )}`;
+        window.open(whatsappURL, "_blank");
     };
-
 
     return (
         <>
@@ -52,7 +52,7 @@ const NikePage = ({ifExists}) => {
                             className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
                                 ifExists ? "justify-items-start" : "justify-items-center"
                             } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105 my-container`}
-                            style={{height: "300px", marginBottom: "50px", marginRight: "15px"}}
+                            style={{ height: "300px", marginBottom: "50px", marginRight: "15px" }}
                         >
                             <img
                                 src={selectedImage}
@@ -61,7 +61,7 @@ const NikePage = ({ifExists}) => {
                             />
                         </div>
                         <div className="mr-11 flex justify-between">
-                            {product.images.map((image, i) => (
+                            {product.colors.map((image, i) => (
                                 <div
                                     key={i}
                                     className={`w-36 h-36 sm:w-24 sm:h-24  mr-5  border-2 rounded-2xl mb-7 cursor-pointer p-5  ${
@@ -69,11 +69,7 @@ const NikePage = ({ifExists}) => {
                                     }`}
                                     onClick={() => changeSelectedImage(image)}
                                 >
-                                    <img
-                                        className="w-full h-full"
-                                        src={image}
-                                        alt={`Image ${i + 1}`}
-                                    />
+                                    <img className="w-full h-full" src={image} alt={`Image ${i + 1}`} />
                                 </div>
                             ))}
                         </div>
@@ -86,7 +82,10 @@ const NikePage = ({ifExists}) => {
                                         className={`border-2 w-45 h-45 p-1.5 rounded text-white cursor-pointer ${
                                             selectedSize === size ? 'bg-blue-500 text-black' : ''
                                         }`}
-                                        onClick={() => setSelectedSize(size)}
+                                        onClick={() => {
+                                            setSelectedSize(size);
+                                            setSelectedColorPrice(product.prices[size].price); // Обновляем цену для выбранного размера
+                                        }}
                                     >
                                         {size}
                                     </div>
@@ -95,12 +94,8 @@ const NikePage = ({ifExists}) => {
                         </div>
                     </div>
                     <div>
-                        <h1 className="text-white text-3xl flex items-center">
-                            {product.title}
-                        </h1>
-                        <h1 className="text-white text-2xl flex items-center">
-                            {product.text}
-                        </h1>
+                        <h1 className="text-white text-3xl flex items-center">{product.title}</h1>
+                        <h1 className="text-white text-2xl flex items-center">{product.text}</h1>
                         <div
                             className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
                                 ifExists ? "justify-items-start" : "justify-items-center"
@@ -110,8 +105,9 @@ const NikePage = ({ifExists}) => {
                                 display: "flex",
                                 justifyContent: "center",
                                 marginTop: "15px",
-                                marginBottom: "40px"
-                            }}>
+                                marginBottom: "40px",
+                            }}
+                        >
                             <p className="text-white text-3xl">{product.price} <span className="text-opacity-60 text-gray-100 text-3xl">Сом</span></p>
                         </div>
                     </div>
@@ -122,7 +118,7 @@ const NikePage = ({ifExists}) => {
                     <p className="text-white mb-5 text-2xl sm:text-1xl">
                         Размер: {selectedSize ? selectedSize : 'Выберите размер'}
                     </p>
-                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цена: {selectedPrice} Сом</h4>
+                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цена: {selectedColorPrice} Сом</h4>
                     <button
                         className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
                             ifExists ? 'justify-items-start' : 'justify-items-center'
@@ -133,9 +129,10 @@ const NikePage = ({ifExists}) => {
                         Купить товар
                     </button>
                 </div>
+
             </div>
             <div className="mt-24 sm:items-center">
-                <NikeSales nikeProduct={nikeProduct}/>
+                <NikeSales nikeProduct={nikeProduct} />
             </div>
         </>
     );
