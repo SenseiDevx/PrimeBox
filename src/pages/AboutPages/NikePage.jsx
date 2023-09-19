@@ -2,6 +2,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import NikeSales from "../../components/NikeProducts/NikeSales.jsx";
 import {nikeProduct} from "../../data/data.js";
 import {useEffect, useState} from 'react';
+import Swal from "sweetalert2";
 
 const NikePage = ({ifExists}) => {
     const {id} = useParams();
@@ -47,14 +48,14 @@ const NikePage = ({ifExists}) => {
 
     const handleBuyClick = () => {
         if (!selectedSize || !selectedImage) {
-            alert('Выберите размер и рассветку, прежде чем купить товар.');
+            Swal.fire('Выберите размер и рассветку, прежде чем купить товар.')
             return; // Прекратить выполнение, если размер не выбран
         }
 
-        const message = `Артикул: ${product.id}\nНазвание: ${product.title}\nРазмер: ${selectedSize}\nЦена за товар: ${selectedPrice} Сом\nЦена за цвет: ${selectedImagePrice} Сом\nЦвет: ${selectedColorDescription}\nИтого: ${totalPrice} Сом`;
+        const message = `Артикул: ${product.id}\nНазвание: ${product.title}\nРазмер: ${selectedSize}\nЦвет: ${selectedColorDescription}\nИтого: ${totalPrice} Сом`;
 
         // Замените "whatsappNumber" на ваш номер WhatsApp
-        const whatsappNumber = '+996709013681';
+        const whatsappNumber = '+996708659585';
 
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
         window.open(whatsappURL, '_blank');
@@ -140,21 +141,17 @@ const NikePage = ({ifExists}) => {
                     <p className="text-white mb-5 text-2xl sm:text-1xl">
                         Размер: {selectedSize }
                     </p>
-                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цена: {selectedPrice} Сом</h4>
-                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">
-                        {selectedImage ? `Цена за цвет: ${selectedImagePrice} Сом` : 'Цена за цвет:'}
-                    </h4>
                     <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цвет: {selectedColorDescription}</h4>
-                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">Итого: {totalPrice} Сом</h4>
+                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цена за товар: {totalPrice} Сом</h4>
 
                     <button
                         className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
                             ifExists ? 'justify-items-start' : 'justify-items-center'
                         } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full`}
-                        style={{ width: '150px', color: 'white' }}
+                        style={{ width: '180px', color: 'white' }}
                         onClick={handleBuyClick}
                     >
-                        Купить товар
+                        Оформить заказ
                     </button>
                 </div>
             </div>
