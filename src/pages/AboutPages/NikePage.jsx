@@ -9,16 +9,14 @@ const NikePage = ({ifExists}) => {
     const navigate = useNavigate();
     const product = nikeProduct.items.find((item) => item.id === id);
     const [selectedSize, setSelectedSize] = useState(null);
-    const [selectedImage, setSelectedImage] = useState(null); // Начальное значение выбранного изображения
+    const [selectedImage, setSelectedImage] = useState(product.images[0].src); // Устанавливаем первое изображение по умолчанию
     const [selectedImagePrice, setSelectedImagePrice] = useState(0); // Начальное значение цены за выбранное изображение
     const [selectedColorDescription, setSelectedColorDescription] = useState("");
     const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
-        // Проверяем, выбраны ли размер и цена за изображение
         if (selectedSize && selectedImagePrice !== null) {
             const selectedPrice = product.prices[selectedSize];
-            // Обновляем итоговую сумму
             setTotalPrice(selectedImagePrice + selectedPrice);
         }
     }, [selectedSize, selectedImagePrice]);
@@ -92,7 +90,7 @@ const NikePage = ({ifExists}) => {
                                     >
                                         <img className="w-full h-full" src={imageData.src} alt={`Image ${i + 1}`} />
                                     </div>
-                                    <div className="text-center mt-2">{imageData.description}</div>
+                                    <div className="text-center text-white  text-2xl sm:text-1xl">{imageData.description}</div>
                                 </div>
                             ))}
                         </div>
