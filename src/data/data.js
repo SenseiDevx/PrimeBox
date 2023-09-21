@@ -25,26 +25,54 @@ const nikeProduct = {
             rating: "5+",
             btn: "Buy Now",
             img: nike7,
-            price: "150",
             color: "from-sky-600 to-indigo-600",
             shadow: "shadow-lg shadow-blue-500",
             images: [
-                { src: nike1, description: "красный", price: 100 },
-                { src: nike2, description: "синий", price: 120 },
-                { src: nike3, description: "зеленый", price: 90 }
-            ],
-            sizes: [36, 37, 38, 39, 40, 42, 43, 44, 45],
-            prices: {
-                36: 150,
-                37: 155,
-                38: 160,
-                39: 165,
-                40: 170,
-                42: 175,
-                43: 180,
-                44: 185,
-                45: 190,
-            },
+                {
+                    src: nike1,
+                    description: "красный",
+                    sizes: {
+                        37: 105,
+                        38: 110,
+                        39: 115,
+                        40: 120,
+                        42: 125,
+                        43: 130,
+                        44: 135,
+                        45: 140
+                    }
+                },
+                {
+                    src: nike2,
+                    description: "синий",
+                    sizes: {
+                        36: 120,
+                        37: 125,
+                        38: 130,
+                        39: 135,
+                        40: 140,
+                        42: 145,
+                        43: 150,
+                        44: 155,
+                        45: 160
+                    }
+                },
+                {
+                    src: nike3,
+                    description: "зеленый",
+                    sizes: {
+                        36: 90,
+                        37: 95,
+                        38: 100,
+                        39: 105,
+                        40: 110,
+                        42: 115,
+                        43: 120,
+                        44: 125,
+                        45: 130
+                    }
+                }
+            ]
         },
         {
             id: "2",

@@ -1,18 +1,22 @@
-import {useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import NikeSales from "../../components/NikeProducts/NikeSales.jsx";
-import {nikeProduct} from "../../data/data.js";
-import {useEffect, useState} from 'react';
+import { nikeProduct } from "../../data/data.js";
+import { useEffect, useState } from 'react';
 import Swal from "sweetalert2";
 
-const NikePage = ({ifExists}) => {
-    const {id} = useParams();
+const NikePage = ({ ifExists }) => {
+    const { id } = useParams();
     const navigate = useNavigate();
     const product = nikeProduct.items.find((item) => item.id === id);
-    const [selectedSize, setSelectedSize] = useState(null);
-    const [selectedImage, setSelectedImage] = useState(product.images[0].src); // Устанавливаем первое изображение по умолчанию
-    const [selectedImagePrice, setSelectedImagePrice] = useState(0); // Начальное значение цены за выбранное изображение
+    const [selectedSize, setSelectedSize] = useState("");
+    const [selectedImageInfo, setSelectedImageInfo] = useState(product.images[0]);
+    const [selectedImage, setSelectedImage] = useState(product.images[0].src);
+    const [selectedImagePrice, setSelectedImagePrice] = useState(0);
     const [selectedColorDescription, setSelectedColorDescription] = useState("");
     const [totalPrice, setTotalPrice] = useState(0);
+    const [activeImage, setActiveImage] = useState(product.images[0].src);
+    const [selectedSizePrice, setSelectedSizePrice] = useState(null);
+
 
     useEffect(() => {
         if (selectedSize && selectedImagePrice !== null) {
@@ -21,25 +25,31 @@ const NikePage = ({ifExists}) => {
         }
     }, [selectedSize, selectedImagePrice]);
 
+    const changeSelectedImage = (image) => {
+        const selectedImageData = product.images.find((imageData) => imageData.src === image);
+        setSelectedImageInfo(selectedImageData);
+        setActiveImage(image);
+
+        // Обновить selectedColorDescription на основе выбранной фотографии
+        setSelectedColorDescription(selectedImageData.description);
+    };
 
 
-    const selectedPrice = product.prices[selectedSize];
-
-
-    if (!product) {
+    if (!product || !product.images || product.images.length === 0) {
         return <div>Товар не найден.</div>;
     }
 
+    if (!selectedImageInfo) {
+        // Если selectedImageInfo не найден, выполните какие-то действия по умолчанию или верните сообщение об ошибке.
+        return <div>Выбранное изображение не найдено.</div>;
+    }
 
-    const back = () => {
-        navigate("/");
-    };
-
-    const changeSelectedImage = (image) => {
-        const selectedImageData = product.images.find((imageData) => imageData.src === image);
-        setSelectedImage(image);
-        setSelectedImagePrice(selectedImageData.price); // Обновляем цену за выбранную картинку
-        setSelectedColorDescription(selectedImageData.description); // Обновляем описание цвета
+    const handleSizeClick = (size) => {
+        setSelectedSize(size);
+        const newSelectedImageInfo = product.images.find((imageData) => imageData.src === activeImage);
+        const newSelectedImagePrice = newSelectedImageInfo.sizes[size];
+        setSelectedImageInfo(newSelectedImageInfo);
+        setSelectedImagePrice(newSelectedImagePrice);
     };
 
 
@@ -47,20 +57,14 @@ const NikePage = ({ifExists}) => {
     const handleBuyClick = () => {
         if (!selectedSize || !selectedImage) {
             Swal.fire('Выберите размер и рассветку, прежде чем купить товар.')
-            return; // Прекратить выполнение, если размер не выбран
+            return;
         }
 
         const message = `Артикул: ${product.id}\nНазвание: ${product.title}\nРазмер: ${selectedSize}\nЦвет: ${selectedColorDescription}\nИтого: ${totalPrice} Сом`;
-
-        // Замените "whatsappNumber" на ваш номер WhatsApp
         const whatsappNumber = '+996708659585';
-
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
         window.open(whatsappURL, '_blank');
     };
-
-
-
 
     return (
         <>
@@ -71,10 +75,10 @@ const NikePage = ({ifExists}) => {
                             className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
                                 ifExists ? "justify-items-start" : "justify-items-center"
                             } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105 my-container`}
-                            style={{height: "300px", marginBottom: "50px", marginRight: "15px"}}
+                            style={{ height: "300px", marginBottom: "50px", marginRight: "15px" }}
                         >
                             <img
-                                src={selectedImage}
+                                src={selectedImageInfo.src}
                                 alt={product.title}
                                 className="w-400 h-400 sm:w-300 sm:h-300 relative rounded-xl py-4 px-5 transition-all duration-700 ease-in-out hover:scale-105 lg:flex justify-center items-center"
                             />
@@ -84,7 +88,7 @@ const NikePage = ({ifExists}) => {
                                 <div key={i} className="mb-7">
                                     <div
                                         className={`w-36 h-36 sm:w-24 sm:h-24 mr-5 border-2 rounded-2xl cursor-pointer p-5 ${
-                                            selectedImage === imageData.src ? 'border-blue-500' : ''
+                                            activeImage === imageData.src ? 'border-blue-500' : 'border-red-500'
                                         }`}
                                         onClick={() => changeSelectedImage(imageData.src)}
                                     >
@@ -95,15 +99,15 @@ const NikePage = ({ifExists}) => {
                             ))}
                         </div>
                         <div className="flex-wrap">
-                            <h1 className="text-2xl text-white pb-2 ">Выбирайте ваш размер</h1>
+                            <h1 className="text-2xl text-white pb-2">размер</h1>
                             <div className="flex gap-3 flex-wrap mb-10 w-100">
-                                {product.sizes.map((size, i) => (
+                                {Object.keys(selectedImageInfo.sizes).map((size, i) => (
                                     <div
                                         key={i}
                                         className={`border-2 w-45 h-45 p-1.5 rounded text-white cursor-pointer ${
                                             selectedSize === size ? 'bg-blue-500 text-black' : ''
                                         }`}
-                                        onClick={() => setSelectedSize(size)}
+                                        onClick={() => handleSizeClick(size)} // Используйте функцию handleSizeClick для обновления выбранного размера
                                     >
                                         {size}
                                     </div>
@@ -137,10 +141,10 @@ const NikePage = ({ifExists}) => {
                     <h4 className="text-white mb-5 text-2xl">Артикул: {product.id}</h4>
                     <h3 className="text-white mb-5 text-2xl sm:text-1xl">Название: {product.title}</h3>
                     <p className="text-white mb-5 text-2xl sm:text-1xl">
-                        Размер: {selectedSize }
+                        Размер: {selectedSize}
                     </p>
                     <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цвет: {selectedColorDescription}</h4>
-                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цена за товар: {totalPrice} Сом</h4>
+                    <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цена за товар: {selectedSizePrice} Сом</h4>
 
                     <button
                         className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
@@ -154,7 +158,7 @@ const NikePage = ({ifExists}) => {
                 </div>
             </div>
             <div className="mt-24 sm:items-center">
-                <NikeSales nikeProduct={nikeProduct}/>
+                <NikeSales nikeProduct={nikeProduct} />
             </div>
         </>
     );
