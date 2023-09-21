@@ -25,6 +25,7 @@ const nikeProduct = {
             rating: "5+",
             btn: "Buy Now",
             img: nike7,
+            price: "150",
             color: "from-sky-600 to-indigo-600",
             shadow: "shadow-lg shadow-blue-500",
             images: [
@@ -32,6 +33,7 @@ const nikeProduct = {
                     src: nike1,
                     description: "красный",
                     sizes: {
+                        36: 145,
                         37: 105,
                         38: 110,
                         39: 115,
@@ -69,7 +71,7 @@ const nikeProduct = {
                         42: 115,
                         43: 120,
                         44: 125,
-                        45: 130
+                        46: 130
                     }
                 }
             ]
