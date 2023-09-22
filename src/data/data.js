@@ -1,5 +1,8 @@
 // nike
-import nike1 from "../assets/nike/product1.png";
+import nikeQuest0 from "../assets/nike/nike_quest.webp";
+import nikeQuestF from "../assets/nike/nike_questfff.png"
+import nikeQuestB from "../assets/nike/nike_questB.webp"
+
 import nike2 from "../assets/nike/product2.png";
 import nike3 from "../assets/nike/product3.png";
 import nike4 from "../assets/nike/product4.png";
@@ -20,60 +23,62 @@ const nikeProduct = {
     items: [
         {
             id: "1",
-            title: "Nike Air Low Premium",
-            text: "MEN Running Shoes",
+            title: "Nike Quest 5",
             rating: "5+",
             btn: "Buy Now",
-            img: nike7,
-            price: "150",
+            img: nikeQuestB,
+            price: "5760",
             color: "from-sky-600 to-indigo-600",
             shadow: "shadow-lg shadow-blue-500",
             images: [
                 {
-                    src: nike1,
-                    description: "красный",
+                    src: nikeQuest0,
+                    description: "черный",
                     sizes: {
-                        36: 145,
-                        37: 105,
-                        38: 110,
-                        39: 115,
-                        40: 120,
-                        42: 125,
-                        43: 130,
-                        44: 135,
-                        45: 140
+                        38.5: 6540,
+                        39: 6410,
+                        40: 6440,
+                        40.5: 6410,
+                        41: 6680,
+                        42: 6150,
+                        42.5: 5760,
+                        43: 6290,
+                        44: 6280,
+                        45: 6150,
+                        46: 6680
                     }
                 },
                 {
-                    src: nike2,
+                    src: nikeQuestF,
+                    description: "белый",
+                    sizes: {
+                        38.5: 8890,
+                        39: 7190,
+                        40: 6670,
+                        40.5: 7460,
+                        41: 7580,
+                        42: 7460,
+                        42.5: 7460,
+                        43: 7460,
+                        44: 6410,
+                        44.5: 6410,
+                        45: 6670
+                    }
+                },
+                {
+                    src: nikeQuestB,
                     description: "синий",
                     sizes: {
-                        36: 120,
-                        37: 125,
-                        38: 130,
-                        39: 135,
-                        40: 140,
-                        42: 145,
-                        43: 150,
-                        44: 155,
-                        45: 160
+                        39: 7320,
+                        40: 7060,
+                        40.5: 7320,
+                        41: 7580,
+                        42: 8230,
+                        42.5: 7980,
+                        43: 8100,
+                        44: 5900,
                     }
                 },
-                {
-                    src: nike3,
-                    description: "зеленый",
-                    sizes: {
-                        36: 90,
-                        37: 95,
-                        38: 100,
-                        39: 105,
-                        40: 110,
-                        42: 115,
-                        43: 120,
-                        44: 125,
-                        46: 130
-                    }
-                }
             ]
         },
         {
@@ -137,7 +142,7 @@ const nikeProduct = {
             text: "MEN Running Shoes",
             rating: "5+",
             btn: "Buy Now",
-            img: nike1,
+            img: nike4,
             price: "150",
             color: "from-yellow-500 to-yellow-500",
             shadow: "shadow-lg shadow-yellow-500",
@@ -274,7 +279,7 @@ const newBalanceProduct = {
             text: "MEN Running Shoes",
             rating: "5+",
             btn: "Buy Now",
-            img: nike1,
+            img: nike5,
             price: "150",
             color: "from-yellow-500 to-yellow-500",
             shadow: "shadow-lg shadow-yellow-500",
