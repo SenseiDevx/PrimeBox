@@ -1,0 +1,44 @@
+.allBlock
+  width: 1200px
+  margin: 100px auto
+  @media (max-width: 800px)
+    width: 100%
+    max-width: 400px
+    margin-left: 20px
+  .firstBlock
+    .blockSelect
+      display: flex
+      flex-wrap: wrap-reverse
+      .images
+        display: flex
+        flex-direction: column
+        margin-right: 20px
+        @media (max-width: 800px)
+          display: flex
+          flex-direction: row
+          margin-left: 0
+          gap: 15px
+        .myCustomClass
+          width: 150px
+          height: 100px
+          cursor: pointer
+          border: 2px solid white
+          padding: 10px
+          border-radius: 8px
+          overflow: hidden
+          align-items: center
+          display: flex
+          justify-content: center
+          @media (max-width: 800px)
+            width: 90px
+            height: 90px
+          .img
+            transition: all 700ms ease-in-out
+            &:hover
+              transform: scale(1.3)
+        .selected
+          border: 2px solid #123456
+          padding: 10px
+          border-radius: 8px
+
+

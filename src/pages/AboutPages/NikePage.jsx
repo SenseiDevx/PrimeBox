@@ -3,10 +3,10 @@ import NikeSales from "../../components/NikeProducts/NikeSales.jsx";
 import { nikeProduct } from "../../data/data.js";
 import { useEffect, useState } from 'react';
 import Swal from "sweetalert2";
+import styles from './aboutpage.module.css'
 
 const NikePage = ({ ifExists }) => {
     const { id } = useParams();
-    const navigate = useNavigate();
     const product = nikeProduct.items.find((item) => item.id === id);
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedImageInfo, setSelectedImageInfo] = useState(product.images[0]);
@@ -58,30 +58,33 @@ const NikePage = ({ ifExists }) => {
 
     return (
         <>
-            <div className="nike-container mt-24">
-                <div className="flex flex-wrap-reverse items-en">
-                    <div>
-                        <div className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105 my-container`} style={{ height: "300px", marginBottom: "50px", marginRight: "15px" }}>
-                            <img src={selectedImageInfo.src} alt={product.title} className="w-400 h-400 sm:w-300 sm:h-300 relative rounded-xl py-4 px-5 transition-all duration-700 ease-in-out hover:scale-105 lg:flex justify-center items-center" />
-                        </div>
-                        <div className="mr-11 flex justify-between">
+            <div className={styles.allBlock}>
+                <div className={styles.firstBlock}>
+                    <div className={styles.blockSelect}>
+                        <div className={styles.images}>
                             {product.images.map((imageData, i) => (
                                 <div key={i} className="mb-7">
-                                    <div className={`w-36 h-36 sm:w-24 sm:h-24 mr-5 border-2 rounded-2xl cursor-pointer p-5 ${selectedImageInfo.src === imageData.src ? "border-blue-500" : "border-red-500"}`} onClick={() => changeSelectedImage(imageData.src)}>
-                                        <img className="w-full h-full" src={imageData.src} alt={`Image ${i + 1}`} />
+                                    <div className={`${styles.myCustomClass} ${selectedImageInfo.src === imageData.src ? styles.selected : ''}`}
+                                         onClick={() => changeSelectedImage(imageData.src)}>
+                                        <img className={styles.img} src={imageData.src} alt={`Image ${i + 1}`} />
                                     </div>
                                     <div className="text-center text-white text-2xl sm:text-1xl">{imageData.description}</div>
                                 </div>
                             ))}
                         </div>
-                        <div className="flex-wrap">
-                            <h1 className="text-2xl text-white pb-2">размер</h1>
-                            <div className="flex gap-3 flex-wrap mb-10 w-100">
-                                {Object.keys(selectedImageInfo.sizes).map((size, i) => (
-                                    <div key={i} className={`border-2 w-45 h-45 p-1.5 rounded text-white cursor-pointer ${selectedSize === size ? "bg-blue-500 text-black" : ""}`} onClick={() => handleSizeClick(size)}>
-                                        {size}
-                                    </div>
-                                ))}
+                        <div>
+                            <div className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105 my-container`} style={{ height: "300px", marginBottom: "50px", marginRight: "15px" }}>
+                                <img src={selectedImageInfo.src} alt={product.title} className="w-400 h-400 sm:w-300 sm:h-300 relative rounded-xl py-4 px-5 transition-all duration-700 ease-in-out hover:scale-105 lg:flex justify-center items-center" />
+                            </div>
+                            <div className="flex-wrap">
+                                <h1 className="text-2xl text-white pb-2">размер</h1>
+                                <div className="flex gap-3 flex-wrap mb-10 w-100">
+                                    {Object.keys(selectedImageInfo.sizes).map((size, i) => (
+                                        <div key={i} className={`border-2 w-45 h-45 p-1.5 rounded text-white cursor-pointer ${selectedSize === size ? "bg-blue-500 text-black" : ""}`} onClick={() => handleSizeClick(size)}>
+                                            {size}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>

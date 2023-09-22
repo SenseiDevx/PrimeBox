@@ -1,0 +1,78 @@
+.allBlock {
+  width: 1200px;
+  margin: 100px auto;
+}
+@media (max-width: 800px) {
+  .allBlock {
+    width: 100%;
+    max-width: 400px;
+    margin-left: 20px;
+  }
+}
+.allBlock .firstBlock .blockSelect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
+}
+.allBlock .firstBlock .blockSelect .images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 20px;
+}
+@media (max-width: 800px) {
+  .allBlock .firstBlock .blockSelect .images {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin-left: 0;
+    gap: 15px;
+  }
+}
+.allBlock .firstBlock .blockSelect .images .myCustomClass {
+  width: 150px;
+  height: 100px;
+  cursor: pointer;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+@media (max-width: 800px) {
+  .allBlock .firstBlock .blockSelect .images .myCustomClass {
+    width: 90px;
+    height: 90px;
+  }
+}
+.allBlock .firstBlock .blockSelect .images .myCustomClass .img {
+  -webkit-transition: all 700ms ease-in-out;
+  transition: all 700ms ease-in-out;
+}
+.allBlock .firstBlock .blockSelect .images .myCustomClass .img:hover {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+.allBlock .firstBlock .blockSelect .images .selected {
+  border: 2px solid #123456;
+  padding: 10px;
+  border-radius: 8px;
+}
