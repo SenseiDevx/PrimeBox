@@ -59,8 +59,21 @@ const AboutPage = ({ifExists}) => {
     return (
         <>
             <div className={styles.allBlock}>
-                <div className={styles.firstBlock}>
-                    <div className={styles.blockSelect}>
+                <div>
+                    <h1 className="text-white mb-5 text-4xl">
+                        {product.title}
+                    </h1>
+                    <p className="text-white text-3xl pb-5">От {product.price} <span
+                        className="text-opacity-60 text-gray-100 text-3xl">Сом</span></p>
+                </div>
+                <div className={styles.intoBlock}>
+                    <div className={styles.firstBlock}>
+                        <div
+                            className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105 my-container`}
+                            style={{height: "300px", marginBottom: "50px", marginRight: "15px"}}>
+                            <img src={selectedImageInfo.src} alt={product.title}
+                                 className="w-400 h-400 sm:w-300 sm:h-300 relative rounded-xl py-4 px-5 transition-all duration-700 ease-in-out hover:scale-105 lg:flex justify-center items-center"/>
+                        </div>
                         <div className={styles.images}>
                             {product.images.map((imageData, i) => (
                                 <div key={i} className="mb-7">
@@ -74,61 +87,47 @@ const AboutPage = ({ifExists}) => {
                                 </div>
                             ))}
                         </div>
-                        <div>
-                            <div
-                                className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105 my-container`}
-                                style={{height: "300px", marginBottom: "50px", marginRight: "15px"}}>
-                                <img src={selectedImageInfo.src} alt={product.title}
-                                     className="w-400 h-400 sm:w-300 sm:h-300 relative rounded-xl py-4 px-5 transition-all duration-700 ease-in-out hover:scale-105 lg:flex justify-center items-center"/>
-                            </div>
-                            <div className="flex-wrap">
-                                <h1 className="text-2xl text-white pb-2">размер</h1>
-                                <div className="flex gap-3 flex-wrap mb-10 w-100">
-                                    {Object.keys(selectedImageInfo.sizes)
-                                        .map((size) => parseFloat(size))
-                                        .sort((a, b) => a - b)
-                                        .map((size, i) => (
-                                            <div
-                                                key={i}
-                                                className={`border-2 w-45 h-45 p-1.5 rounded text-white cursor-pointer ${selectedSize === size ? "bg-blue-500 text-black" : ""}`}
-                                                onClick={() => handleSizeClick(size)}
-                                            >
-                                                {size}
-                                            </div>
-                                        ))}
-                                </div>
+                        <div className={styles.sizesBlock}>
+                            <h1 className="text-2xl text-white pb-2">Размер</h1>
+                            <div className={styles.sizes}>
+                                {Object.keys(selectedImageInfo.sizes)
+                                    .map((size) => parseFloat(size))
+                                    .sort((a, b) => a - b)
+                                    .map((size, i) => (
+                                        <div
+                                            key={i}
+                                            className={`border-2 w-45 h-45 p-1.5 rounded text-white cursor-pointer ${selectedSize === size ? "bg-blue-500 text-black" : ""}`}
+                                            onClick={() => handleSizeClick(size)}
+                                        >
+                                            {size}
+                                        </div>
+                                    ))}
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className={styles.secondBlock}>
-                    <div className={styles.textBlock}>
-                        <h1 className={styles.h1}>
-                            {product.title}:
-                        </h1>
-                        <p className="text-white text-3xl">От {product.price} <span
-                            className="text-opacity-60 text-gray-100 text-3xl">Сом</span></p>
-                    </div>
-                    <div className="border-2 border-blue-400 p-5 w-96 rounded-2xl sm:w-64">
-                        <h4 className="text-white mb-5 text-2xl">Артикул: {product.id}</h4>
-                        <h3 className="text-white mb-5 text-2xl sm:text-1xl">Название: {product.title}</h3>
-                        <p className="text-white mb-5 text-2xl sm:text-1xl">
-                            Размер: {selectedSize}
-                        </p>
-                        <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цвет: {selectedColorDescription}</h4>
-                        <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цена: {selectedSizePrice} <span
-                            className="text-opacity-60 text-gray-100 text-3xl">Сом</span></h4>
-                        <button
-                            className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
-                                ifExists ? 'justify-items-start' : 'justify-items-center'
-                            } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full`}
-                            style={{width: '180px', color: 'white'}}
-                            onClick={handleBuyClick}
-                        >
-                            Оформить заказ
-                        </button>
+                    <div className={styles.secondBlock}>
+                        <div className="border-2 border-blue-400 p-5 w-96 rounded-2xl sm:w-64">
+                            <h4 className="text-white mb-5 text-2xl">Артикул: {product.id}</h4>
+                            <h3 className="text-white mb-5 text-2xl sm:text-1xl">Название: {product.title}</h3>
+                            <p className="text-white mb-5 text-2xl sm:text-1xl">
+                                Размер: {selectedSize}
+                            </p>
+                            <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цвет: {selectedColorDescription}</h4>
+                            <h4 className="text-white mb-5 text-2xl sm:text-1xl">Цена: {selectedSizePrice} <span
+                                className="text-opacity-60 text-gray-100 text-3xl">Сом</span></h4>
+                            <button
+                                className={`relative bg-gradient-to-b ${product.color} ${product.shadow} grid items-center ${
+                                    ifExists ? 'justify-items-start' : 'justify-items-center'
+                                } rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full`}
+                                style={{width: '180px', color: 'white'}}
+                                onClick={handleBuyClick}
+                            >
+                                Оформить заказ
+                            </button>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </>
     );

@@ -1,25 +1,24 @@
 .allBlock
   width: 1200px
   margin: 100px auto
-  display: flex
-  justify-content: space-between
-  flex-wrap: wrap
   @media (max-width: 800px)
     width: 100%
     max-width: 400px
     margin-left: 20px
-  .firstBlock
-    .blockSelect
+  .intoBlock
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    .firstBlock
       display: flex
-      flex-wrap: wrap-reverse
+      flex-wrap: wrap
+      width: 700px
       .images
         display: flex
         flex-direction: column
-        margin-right: 20px
         @media (max-width: 800px)
           display: flex
           flex-direction: row
-          margin-left: 0
           gap: 15px
         .myCustomClass
           width: 150px
@@ -39,22 +38,17 @@
           border: 2px solid #ffffff
           padding: 10px
           border-radius: 8px
-
-  .secondBlock
-    display: flex
-    flex-direction: column
-    .textBlock
+      .sizesBlock
+        margin-top: -150px
+        @media (max-width: 880px)
+          margin-top: 0
+        .sizes
+          width: 400px
+          display: flex
+          flex-wrap: wrap
+          gap: 10px
+          margin-bottom: 15px
+    .secondBlock
       display: flex
-      align-items: center
-      gap: 10px
-      justify-content: center
-      margin-bottom: 15px
-      .h1
-        font-family: 'Quicksand', sans-serif
-        color: white
-        font-size: 26px
-        @media (max-width: 800px)
-          border: 1px solid #123456
-          padding: 5px
-          border-radius: 8px
+      flex-direction: column
 

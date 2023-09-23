@@ -1,6 +1,6 @@
 // nike
 import nikeQuest0 from "../assets/nike/nike_quest.webp";
-import nikeQuestF from "../assets/nike/nike_questfff.png"
+import nikeQuestF from "../assets/nike/nike_questfff.webp"
 import nikeQuestB from "../assets/nike/nike_questB.webp"
 
 import nike2 from "../assets/nike/product2.png";

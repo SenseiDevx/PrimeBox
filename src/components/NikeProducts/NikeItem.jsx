@@ -62,11 +62,11 @@ const NikeItem = ({
                         <img
                             src={img}
                             alt={`img/item-img/${id}`}
-                            className={`transitions-theme hover:-rotate-12 ${
-                                ifExists
-                                    ? "h-auto w-64 lg:w-56 md:w-48 -rotate-[35deg]"
-                                    : "h-36 w-64"
-                            }`}
+                            // className={`transitions-theme hover:-rotate-12 ${
+                            //     ifExists
+                            //         ? "h-auto w-64 lg:w-56 md:w-48 -rotate-[35deg]"
+                            //         : "h-36 w-64"
+                            // }`}
                         />
                     </div>
                 </div>

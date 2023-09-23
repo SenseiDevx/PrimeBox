@@ -1,6 +1,15 @@
 .allBlock {
   width: 1200px;
   margin: 100px auto;
+}
+@media (max-width: 800px) {
+  .allBlock {
+    width: 100%;
+    max-width: 400px;
+    margin-left: 20px;
+  }
+}
+.allBlock .intoBlock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,21 +19,15 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-@media (max-width: 800px) {
-  .allBlock {
-    width: 100%;
-    max-width: 400px;
-    margin-left: 20px;
-  }
-}
-.allBlock .firstBlock .blockSelect {
+.allBlock .intoBlock .firstBlock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap-reverse;
-      flex-wrap: wrap-reverse;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 700px;
 }
-.allBlock .firstBlock .blockSelect .images {
+.allBlock .intoBlock .firstBlock .images {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32,10 +35,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-right: 20px;
 }
 @media (max-width: 800px) {
-  .allBlock .firstBlock .blockSelect .images {
+  .allBlock .intoBlock .firstBlock .images {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -43,11 +45,10 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    margin-left: 0;
     gap: 15px;
   }
 }
-.allBlock .firstBlock .blockSelect .images .myCustomClass {
+.allBlock .intoBlock .firstBlock .images .myCustomClass {
   width: 150px;
   height: 100px;
   cursor: pointer;
@@ -65,18 +66,36 @@
           justify-content: center;
 }
 @media (max-width: 800px) {
-  .allBlock .firstBlock .blockSelect .images .myCustomClass {
+  .allBlock .intoBlock .firstBlock .images .myCustomClass {
     width: 90px;
     height: 90px;
     padding: 2px;
   }
 }
-.allBlock .firstBlock .blockSelect .images .selected {
+.allBlock .intoBlock .firstBlock .images .selected {
   border: 2px solid #ffffff;
   padding: 10px;
   border-radius: 8px;
 }
-.allBlock .secondBlock {
+.allBlock .intoBlock .firstBlock .sizesBlock {
+  margin-top: -150px;
+}
+@media (max-width: 880px) {
+  .allBlock .intoBlock .firstBlock .sizesBlock {
+    margin-top: 0;
+  }
+}
+.allBlock .intoBlock .firstBlock .sizesBlock .sizes {
+  width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.allBlock .intoBlock .secondBlock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,29 +103,4 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-.allBlock .secondBlock .textBlock {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 10px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-bottom: 15px;
-}
-.allBlock .secondBlock .textBlock .h1 {
-  font-family: "Quicksand", sans-serif;
-  color: white;
-  font-size: 26px;
-}
-@media (max-width: 800px) {
-  .allBlock .secondBlock .textBlock .h1 {
-    border: 1px solid #123456;
-    padding: 5px;
-    border-radius: 8px;
-  }
 }
