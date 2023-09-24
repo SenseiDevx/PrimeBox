@@ -1,7 +1,8 @@
 // nike
 import nikeQuest0 from "../assets/nike/nike_quest.webp";
-import nikeQuestF from "../assets/nike/nike_questfff.webp"
+import nikeQuestF from "../assets/nike/nike_questF.webp"
 import nikeQuestB from "../assets/nike/nike_questB.webp"
+import nikeForceHigh from "../assets/nike/forceFFF.webp"
 
 import nike2 from "../assets/nike/product2.png";
 import nike3 from "../assets/nike/product3.png";
@@ -83,14 +84,29 @@ const nikeProduct = {
         },
         {
             id: "2",
-            title: "Nike Air Force Green",
-            text: "MEN Running Shoes",
+            title: "Nike Air Force 1 High LE",
             rating: "5+",
             btn: "Buy Now",
-            img: nike2,
-            price: "150",
-            color: "from-green-500 to-eme rald-500",
-            shadow: "shadow-lg shadow-green-500",
+            img: nikeForceHigh,
+            price: "6790",
+            color: "from-sky-600 to-indigo-600",
+            shadow: "shadow-lg shadow-blue-500",
+            images: [
+                {
+                    src: nikeQuest0,
+                    description: "черный",
+                    sizes: {
+                        35.5: 6790,
+                        36: 6790,
+                        36.5: 6440,
+                        37.5: 6410,
+                        38: 6680,
+                        38.5: 6150,
+                        39: 5760,
+                        40: 6290,
+                    }
+                },
+            ]
         },
         {
             id: "3",
