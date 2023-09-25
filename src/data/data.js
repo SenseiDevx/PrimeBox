@@ -3,6 +3,8 @@ import nikeQuest0 from "../assets/nike/nike_quest.webp";
 import nikeQuestF from "../assets/nike/nike_questF.webp"
 import nikeQuestB from "../assets/nike/nike_questB.webp"
 import nikeForceHigh from "../assets/nike/forceFFF.webp"
+import nikeAirHeightsWB from "../assets/nike/nike_air_heights_wb.webp"
+import nikeAirHeightBw from "../assets/nike/nike_air_height_bw.webp"
 
 import nike2 from "../assets/nike/product2.png";
 import nike3 from "../assets/nike/product3.png";
@@ -106,18 +108,65 @@ const nikeProduct = {
                         40: 6290,
                     }
                 },
+                {
+                    src: nikeQuest0,
+                    description: "черный",
+                    sizes: {
+                        35.5: 6790,
+                        36: 6790,
+                        36.5: 6440,
+                        37.5: 6410,
+                        38: 6680,
+                        38.5: 6150,
+                        39: 5760,
+                        40: 6290,
+                    }
+                },
+                {
+                    src: nikeQuest0,
+                    description: "черный",
+                    sizes: {
+                        35.5: 6790,
+                        36: 6790,
+                        36.5: 6440,
+                        37.5: 6410,
+                        38: 6680,
+                        38.5: 6150,
+                        39: 5760,
+                        40: 6290,
+                    }
+                },
             ]
         },
         {
             id: "3",
-            title: "Nike Addapt BB Rose",
-            text: "MEN Running Shoes",
+            title: "Nike Air Heights",
             rating: "5+",
             btn: "Buy Now",
-            img: nike3,
-            price: "150",
-            color: "from-red-500 to-rose-500",
-            shadow: "shadow-lg shadow-rose-500",
+            img: nikeAirHeightsWB,
+            price: "4280",
+            color: "from-sky-600 to-indigo-600",
+            shadow: "shadow-lg shadow-blue-500",
+            images: [
+                {
+                    src: nikeAirHeightsWB,
+                    description: "белый",
+                    sizes: {
+                        38.5: 8830,
+                        39: 6280,
+                        40: 6020,
+                        40.5: 5760,
+                        41: 5760,
+                        42: 5760,
+                        42.5: 5760,
+                        43: 5760,
+                        44: 5760,
+                        44.5: 5760,
+                        45: 6280,
+                        46: 6410
+                    }
+                },
+            ]
         },
         {
             id: "4",
